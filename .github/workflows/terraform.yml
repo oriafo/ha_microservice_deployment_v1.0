@@ -13,13 +13,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
     
-      - name: Set up AWS CLI
+      - name: Configure AWS Credentials for China region audience
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1  # Change to your desired region
-
+          audience: sts.amazonaws.com.cn
+          aws-region: us-east-3
+          role-to-assume: arn:aws-cn:iam::123456789100:role/my-github-actions-role
+          
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v1
         with:
