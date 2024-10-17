@@ -39,7 +39,7 @@ jobs:
 
       - name: Plan Terraform
         id: plan
-        run: terraform -chdir=/infra plan -out=tfplan
+        run: terraform -chdir=../infra plan -out=tfplan
 
       - name: Apply Terraform
         run: |
