@@ -22,7 +22,7 @@ provider "aws" {
 
 resource "aws_key_pair" "pub_key" {
   key_name = "key"  # Replace with the name of your key pair
-  public_key = file("key.pub")
+  public_key = var.aws_public_key
 }
 
 resource "aws_instance" "provisioner_machine" {
