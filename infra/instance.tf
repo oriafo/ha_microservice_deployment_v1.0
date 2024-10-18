@@ -26,7 +26,7 @@ resource "aws_key_pair" "pub_key" {
 }
 
 resource "aws_instance" "provisioner_machine" {
-  ami           = data.aws_ami.ubuntu.id
+  ami           = "ami-0866a3c8686eaeeba"
   instance_type = var.instance_type
   #key_name      = data.aws_key_pair.my_key.key_name 
   key_name      = aws_key_pair.pub_key.key_name 
