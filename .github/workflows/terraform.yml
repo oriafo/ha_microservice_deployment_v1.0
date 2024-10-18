@@ -46,7 +46,8 @@ jobs:
         uses: hashicorp/setup-terraform@v1
         with:
           terraform_version: 1.9.8 # Specify the version you need
-          
+
+# Try cd into infra
       - name: Initialize Terraform
         run: terraform init
 
@@ -55,8 +56,8 @@ jobs:
 
       - name: Plan Terraform
         id: plan
-        # run: terraform -chdir=../infra plan -out=tfplan
-        run: terraform plan
+        run: terraform -chdir=infra plan -out=tfplan
+        # run: terraform plan
 
       - name: Apply Terraform
         run: |
