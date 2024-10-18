@@ -9,7 +9,8 @@ on:
       - '!feature/*'
       # - 'releases/**'
 
-      
+
+# fix: added credential for multiple environment and this credentials are selected based on the github.ref
 permissions:
   id-token: write   # This is required for requesting the JWT
   contents: read 
@@ -24,8 +25,8 @@ jobs:
     
       - name: Configure AWS Credentials for Development Environment
         uses: aws-actions/configure-aws-credentials@v1
+        if: github.ref == 'refs/head/dev'
         with:
-          if: github.ref == 'refs/head/dev'
           run: |
             aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID_DEV }}
             aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_DEV }}
@@ -34,15 +35,14 @@ jobs:
       
       - name: Configure AWS Credentials for Development Environment
         uses: aws-actions/configure-aws-credentials@v1
+        if: github.ref == 'refs/head/staging'
         with:
-          if: github.ref == 'refs/head/staging'
           run: |
             aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID_STAGING }}
             aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_STAGING }}
             aws-region: us-east-1
             role-to-assume: arn:aws:iam::681117582889:role/GitActionPermissionPolicy
-          
-                  
+                         
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v1
         with:
