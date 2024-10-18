@@ -70,7 +70,7 @@ jobs:
 
       - name: Apply Terraform
         run: |
-          terraform apply --auto-approve 
+          terraform apply tfplan 
 
         # continue-on-error: true  # Continue even if apply fails for status check
 
