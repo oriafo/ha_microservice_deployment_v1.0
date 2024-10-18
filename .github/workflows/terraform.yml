@@ -47,19 +47,24 @@ jobs:
         with:
           terraform_version: 1.9.8 # Specify the version you need
 
-      - name: Change Directory to access your .tf script
-        run: cd infra
+      - name: Running some .tf script
+        run: |
+          cd infra
+          terraform init
+          terraform fmt
+          terraform validate
+          terraform plan -out=tfplan
 
-      - name: Initialize Terraform
-        run: terraform init
+      # - name: Initialize Terraform
+      #   run: terraform init
 
-      - name: Validate Terraform
-        run: terraform validate
+      # - name: Validate Terraform
+      #   run: terraform validate
 
-      - name: Plan Terraform
-        id: plan
-        run: terraform -chdir=infra plan -out=tfplan
-        # run: terraform plan
+      # - name: Plan Terraform
+      #   id: plan
+      #   run: terraform -chdir=infra plan -out=tfplan
+      #   # run: terraform plan
 
       - name: Apply Terraform
         run: |
