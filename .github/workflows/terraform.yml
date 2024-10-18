@@ -25,7 +25,7 @@ jobs:
     
       - name: Configure AWS Credentials for Development Environment
         uses: aws-actions/configure-aws-credentials@v1
-        if: github.ref == 'refs/head/dev'
+        if: github.ref == 'refs/heads/dev'
         with:
           run: |
             aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID_DEV }}
@@ -33,9 +33,9 @@ jobs:
             aws-region: us-east-1
             role-to-assume: arn:aws:iam::681117582889:role/GitActionPermissionPolicy
       
-      - name: Configure AWS Credentials for Development Environment
+      - name: Configure AWS Credentials for staging Environment
         uses: aws-actions/configure-aws-credentials@v1
-        if: github.ref == 'refs/head/staging'
+        if: github.ref == 'refs/heads/staging'
         with:
           run: |
             aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID_STAGING }}
