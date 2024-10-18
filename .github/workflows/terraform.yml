@@ -47,12 +47,14 @@ jobs:
         with:
           terraform_version: 1.9.8 # Specify the version you need
 
-# Try cd into infra
+      - name: Change Directory to access your .tf script
+        run: cd infra
+
       - name: Initialize Terraform
-        run: terraform init -chdir=infra
+        run: terraform init
 
       - name: Validate Terraform
-        run: terraform validate -chdir=infra
+        run: terraform validate
 
       - name: Plan Terraform
         id: plan
@@ -61,7 +63,7 @@ jobs:
 
       - name: Apply Terraform
         run: |
-          terraform apply -chdir=infra -auto-approve
+          terraform apply -auto-approve
         continue-on-error: true  # Continue even if apply fails for status check
 
       - name: Check Terraform Status
