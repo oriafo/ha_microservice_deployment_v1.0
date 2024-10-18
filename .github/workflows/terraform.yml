@@ -66,9 +66,10 @@ jobs:
       #   run: terraform -chdir=infra plan -out=tfplan
       #   # run: terraform plan
 
+
       - name: Apply Terraform
         run: |
-          terraform apply -var "aws_public_key=${{ secrets.AWS_PUBLIC_KEY }}" --auto-approve
+          terraform apply -var "aws_public_key=${{ secrets.AWS_PUBLIC_KEY }}" -var "aws_private_key=${{ secrets.AWS_PRIVATE_KEY }}" --auto-approve
         continue-on-error: true  # Continue even if apply fails for status check
 
       - name: Check Terraform Status

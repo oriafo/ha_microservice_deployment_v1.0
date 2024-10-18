@@ -19,6 +19,7 @@ provider "aws" {
   region = "us-east-1"
 }
 
+
 resource "aws_key_pair" "pub_key" {
   key_name = "key"  # Replace with the name of your key pair
   public_key = var.aws_public_key
@@ -39,7 +40,7 @@ resource "aws_instance" "provisioner_machine" {
       type        = "ssh"
       host        = self.public_ip
       user        = "ubuntu"
-      private_key = aws_key_pair.pub_key.key_name   # Path to your SSH key
+      private_key = var.aws_private_key  # Path to your SSH key
     }
   }
 
@@ -54,7 +55,7 @@ resource "aws_instance" "provisioner_machine" {
       type        = "ssh"
       host        = self.public_ip
       user        = "ubuntu"
-      private_key = aws_key_pair.pub_key.key_name    # Path to your SSH key
+      private_key = var.aws_private_key   # Path to your SSH key
     }
   }
 }
