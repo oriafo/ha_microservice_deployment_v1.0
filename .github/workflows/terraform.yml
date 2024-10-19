@@ -68,10 +68,13 @@ jobs:
       #   run: terraform -chdir=infra plan -out=tfplan
       #   # run: terraform plan
 
+      - name: List Files
+        run: ls -la
 
       - name: Apply Terraform
         run: |
-          terraform apply tfplan -var "aws_public_key=${{ secrets.AWS_PUBLIC_KEY }}" -var "aws_private_key=${{ secrets.AWS_PRIVATE_KEY }}" --auto-approve
+          terraform apply tfplan --auto-approve
+
         # continue-on-error: true  # Continue even if apply fails for status check
 
       - name: Check Terraform Status
