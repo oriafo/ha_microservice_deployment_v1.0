@@ -12,8 +12,8 @@ on:
 
 # fix: added credential for multiple environment and this credentials are selected based on the github.ref
 permissions:
-  id-token: write   # This is required for requesting the JWT
-  contents: read 
+  contents: read
+  id-token: write
 
 jobs:
   Infra_provisioning:
