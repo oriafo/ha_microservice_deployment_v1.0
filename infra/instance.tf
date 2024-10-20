@@ -4,7 +4,7 @@ terraform {
   #   key            = "infraa.tfstate"
   #   region         = "us-east-1"         
   #   dynamodb_table = "ab-provisioner-lock"    
-  #   encrypt        = true                  
+  #   encrypt        = true                   
   # }
 
   required_providers {
