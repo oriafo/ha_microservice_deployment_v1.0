@@ -10,3 +10,4 @@ key.pub
 /infra/*.terraform.backup
 /infra/*.terraform.lock.hcl
 /infra/*.terraform
+*oidc_Role.yaml
