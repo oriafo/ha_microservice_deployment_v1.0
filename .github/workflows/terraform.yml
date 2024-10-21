@@ -8,6 +8,10 @@ on:
       - '!dev'
       - '!feature/*'
       # - 'releases/**'
+  workflow_call:
+    secrets:
+      ROLE_TO_ASSUME:
+        required: true
 
 
 # fix: added credential for multiple environment and this credentials are selected based on the github.ref
